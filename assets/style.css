@@ -1,0 +1,138 @@
+body
+{
+    overflow: hidden;
+    margin: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#desktop
+{
+    
+    height: calc(100vh - 50px);
+    background-image: url("windows.jpg");
+    background-size: cover;
+}
+
+#seperator
+{
+    display: block;
+    height: 1px;
+    background-color: #464646;
+}
+
+#taskbar
+{
+    display: flex;
+    flex-direction: row;
+    background-color: #262626;
+    height: 42px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    justify-content: end;
+}
+
+#showDesktop
+{
+    height: max-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 6px 12px 6px;
+    opacity: 0;
+    transition: 0.1s
+}
+
+#showDesktop span
+{
+    display: block;
+    height: 14px;
+    width: 1px;
+    background-color: #9c9c9c;
+}
+
+#showDesktop:hover
+{
+    opacity: 1;
+}
+
+#datetime
+{
+    width: fit-content;
+    border-radius: 3px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    user-select: none;
+    transition: 0.1s;
+}
+
+#datetime:hover
+{
+    background-color: #333333;
+}
+
+#datetime p
+{
+    margin: 0px;
+    font-size: 12px;
+    text-align: end;
+    color: white;
+}
+
+#icons
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+    user-select: none;
+    transition: 0.1s;
+}
+
+#icons img
+{
+    width: 16px;
+}
+
+#icons:hover
+{
+    background-color: #333333;
+}
+
+#datetimeMenu
+{
+    position: fixed;
+    background-color: #2e2e2e;
+    bottom: 60px;
+    right: 12px;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    user-select: none;
+    transition: 0.2s;
+}
+
+#datetimeMenu p
+{
+    margin: 0px;
+    font-size: 16px;
+    color: white;
+}
+
+.hidden
+{
+    right: -220px !important;
+}
+
+#iconMenu
+{
+    position: fixed;
+    background-color: #2e2e2e;
+}
