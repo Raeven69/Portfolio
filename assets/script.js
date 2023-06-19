@@ -31,6 +31,9 @@ function hideMenus()
 
 function openDatetimeMenu(event)
 {
+    var datetime = document.getElementById("datetime");
+    datetime.classList.add("animate");
+    setTimeout(() => datetime.classList.remove("animate"), 200);
     var datetimeMenu = document.getElementById("datetimeMenu");
     if (datetimeMenu.classList.contains("hidden"))
     {
@@ -49,6 +52,9 @@ function openDatetimeMenu(event)
 
 function openIconMenu(event)
 {
+    var icons = document.getElementById("icons");
+    icons.classList.add("animate");
+    setTimeout(() => icons.classList.remove("animate"), 200);
     var iconMenu = document.getElementById("iconMenu");
     if (iconMenu.classList.contains("hidden"))
     {
@@ -104,13 +110,17 @@ function volumeSlider(event)
     {
         img.src = "assets/mute.png";
     }
+    for (element of document.getElementsByTagName("video"))
+    {
+        element.volume = volume / 100;
+    }
 }
 
 function openStartMenu(event)
 {
     var start = document.getElementById("start");
     start.children[0].classList.add("startAnimate");
-    setTimeout(() => {start.children[0].classList.remove("startAnimate")}, 200);
+    setTimeout(() => start.children[0].classList.remove("startAnimate"), 200);
     var startMenu = document.getElementById("startMenu");
     if (startMenu.classList.contains("startHidden"))
     {
@@ -118,6 +128,79 @@ function openStartMenu(event)
         event.stopPropagation();
     }
     startMenu.classList.toggle("startHidden");
+}
+
+function addWindowHandler(wndw)
+{
+    wndw.getElementsByClassName("windowClose")[0].onclick = () =>
+    {
+        document.body.removeChild(wndw);
+    }
+    var pos1, pos2, pos3, pos4;
+    wndw.getElementsByClassName("windowHeader")[0].onmousedown = (event) =>
+    {
+        event.preventDefault();
+        var highestIndex = 1;
+        for (wndw2 of document.getElementsByClassName("window"))
+        {
+            if (parseInt(wndw2.style.zIndex) >= highestIndex)
+            {
+                highestIndex = parseInt(wndw2.style.zIndex) + 1;
+            }
+        }
+        wndw.style.zIndex = highestIndex;
+        pos3 = event.clientX;
+        pos4 = event.clientY;
+        document.onmouseup = () =>
+        {
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+        document.onmousemove = (event) =>
+        {
+            event.preventDefault();
+            pos1 = pos3 - event.clientX;
+            pos2 = pos4 - event.clientY;
+            pos3 = event.clientX;
+            pos4 = event.clientY;
+            wndw.style.top = (wndw.offsetTop - pos2) + "px";
+            wndw.style.left = (wndw.offsetLeft - pos1) + "px";
+        }
+    }
+}
+
+function addTextFile(name, text)
+{
+    var program = document.createElement("div");
+    program.classList.add("program");
+    var image = document.createElement("img");
+    image.src = "assets/text.png";
+    image.alt = "Text document";
+    program.appendChild(image);
+    var filename = document.createElement("p");
+    filename.innerText = name;
+    program.appendChild(filename);
+    document.getElementById("programs").appendChild(program);
+    program.ondblclick = () =>
+    {
+        var wndw = document.createElement("div");
+        wndw.classList.add("window");
+        wndw.style.left = Math.round(Math.random() * (window.innerWidth - 680)) + "px";
+        wndw.style.top = Math.round(Math.random() * (window.innerHeight - 420)) + "px";
+        var header = document.createElement("header");
+        header.classList.add("windowHeader");
+        wndw.appendChild(header);
+        var close = document.createElement("div");
+        close.classList.add("windowClose");
+        wndw.appendChild(close);
+        close.appendChild(document.createElement("span"));
+        close.appendChild(document.createElement("span"));
+        var textarea = document.createElement("textarea");
+        textarea.innerText = text;
+        wndw.appendChild(textarea);
+        document.body.appendChild(wndw);
+        addWindowHandler(wndw);
+    }
 }
 
 window.onload = () => {
@@ -130,7 +213,9 @@ window.onload = () => {
     document.getElementById("iconMenu").onclick = (event) => event.stopPropagation();
     document.getElementById("startMenu").onclick = (event) => event.stopPropagation();
     document.body.onclick = clickListener;
-    new DragSelect({area: document.getElementById("desktop")});
+    new DragSelect({selectables: document.getElementsByClassName("program"), area: document.getElementById("desktop")});
     document.getElementById("brightness").oninput = brightnessSlider;
     document.getElementById("volume").oninput = volumeSlider;
+
+    addTextFile("hello.txt", "GUTENTAG");
 }
