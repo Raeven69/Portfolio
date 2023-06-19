@@ -128,11 +128,69 @@ body
 
 .hidden
 {
-    right: -220px !important;
+    right: -320px !important;
 }
 
 #iconMenu
 {
     position: fixed;
     background-color: #2e2e2e;
+    bottom: 60px;
+    right: 12px;
+    width: 300px;
+    height: 120px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;
+    padding-left: 16px;
+    user-select: none;
+    transition: 0.2s;
+}
+
+.iconContainer
+{
+    display: flex;
+    align-items: center;
+}
+
+.iconContainer img
+{
+    width: 20px;
+    margin-right: 10px;
+    transition: 0.1s;
+}
+
+.slider
+{
+    height: 5px;
+    margin: 0px;
+    appearance: none;
+    width: 220px;
+    background-color: #606060;
+}
+
+.slider::-webkit-slider-runnable-track
+{
+    border-radius: 5px;
+    height: 5px;
+    transition: 0.1s;
+}
+
+.slider::-webkit-slider-thumb
+{
+    border-radius: 10px;
+    background-color: #606060;
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    border: solid #454545 5px;
+    margin-top: -7px;
+    transition: 0.1s;
+}
+
+.slider::-webkit-slider-thumb:hover
+{
+    border-width: 3px;
 }

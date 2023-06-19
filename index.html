@@ -6,14 +6,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="assets/style.css">
         <script type="text/javascript" src="assets/script.js"></script>
+        <script src="https://dragselect.com/v2/ds.min.js"></script>
     </head>
     <body>
         <div id="desktop"></div>
         <div id="datetimeMenu" class="hidden">
             <p id="menuDate"></p>
         </div>
-        <div id="iconMenu">
-            
+        <div id="iconMenu" class="hidden">
+            <div class="iconContainer">
+                <img id="brightnessImage" src="assets/brightness.png" Alt="Helderheid">
+                <input id="brightness" class="slider" type="range" min="20" max="100" value="100">
+            </div>
+            <div class="iconContainer">
+                <img id="volumeImage" src="assets/sound.png" Alt="Speakers">
+                <input id="volume" class="slider" type="range" min="0" max="100" value="100">
+            </div>
         </div>
         <span id="seperator"></span>
         <footer id="taskbar">
