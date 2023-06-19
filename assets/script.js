@@ -18,13 +18,13 @@ function dateUpdater()
     document.getElementById("date").innerText = `${day}/${month}/${year}`;
 }
 
-function hideMenus(except)
+function hideMenus()
 {
     for (let i = 0; i < elements.length; i++)
     {
-        if (elements[i] != except && !elements[i].classList.contains("hidden"))
+        if (!elements[i].element.classList.contains(elements[i].classname))
         {
-            elements[i].classList.add("hidden");
+            elements[i].element.classList.add(elements[i].classname);
         }
     }
 }
@@ -62,9 +62,9 @@ function clickListener()
 {
     for (let i = 0; i < elements.length; i++)
     {
-        if (!elements[i].classList.contains("hidden"))
+        if (!elements[i].element.classList.contains(elements[i].classname))
         {
-            elements[i].classList.add("hidden");
+            elements[i].element.classList.add(elements[i].classname);
         }
     }
 }
@@ -106,16 +106,31 @@ function volumeSlider(event)
     }
 }
 
+function openStartMenu(event)
+{
+    var start = document.getElementById("start");
+    start.children[0].classList.add("startAnimate");
+    setTimeout(() => {start.children[0].classList.remove("startAnimate")}, 200);
+    var startMenu = document.getElementById("startMenu");
+    if (startMenu.classList.contains("startHidden"))
+    {
+        hideMenus()
+        event.stopPropagation();
+    }
+    startMenu.classList.toggle("startHidden");
+}
+
 window.onload = () => {
-    elements = [document.getElementById("datetimeMenu"), document.getElementById("iconMenu")];
+    elements = [{element: document.getElementById("datetimeMenu"), classname: "hidden"}, {element: document.getElementById("iconMenu"), classname: "hidden"}, {element: document.getElementById("startMenu"), classname: "startHidden"}];
     setInterval(dateUpdater, 100);
     document.getElementById("datetime").onclick = openDatetimeMenu;
     document.getElementById("icons").onclick = openIconMenu;
+    document.getElementById("start").onclick = openStartMenu;
     document.getElementById("datetimeMenu").onclick = (event) => event.stopPropagation();
     document.getElementById("iconMenu").onclick = (event) => event.stopPropagation();
+    document.getElementById("startMenu").onclick = (event) => event.stopPropagation();
     document.body.onclick = clickListener;
     new DragSelect({area: document.getElementById("desktop")});
-
     document.getElementById("brightness").oninput = brightnessSlider;
     document.getElementById("volume").oninput = volumeSlider;
 }

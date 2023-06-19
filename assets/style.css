@@ -28,7 +28,12 @@ body
     height: 42px;
     padding-top: 3px;
     padding-bottom: 3px;
-    justify-content: end;
+    justify-content: space-between;
+}
+
+#right
+{
+    display: flex;
 }
 
 #showDesktop
@@ -131,6 +136,11 @@ body
     right: -320px !important;
 }
 
+.startHidden
+{
+    left: -420px !important;
+}
+
 #iconMenu
 {
     position: fixed;
@@ -193,4 +203,107 @@ body
 .slider::-webkit-slider-thumb:hover
 {
     border-width: 3px;
+}
+
+#start
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    border-radius: 3px;
+    padding: 8px;
+    user-select: none;
+    transition: 0.1s;
+}
+
+#start:hover
+{
+    background-color: #333333;
+}
+
+#start img
+{
+    width: 24px;
+}
+
+.startAnimate
+{
+    animation: startClick linear 0.2s;
+}
+
+#startMenu
+{
+    position: fixed;
+    background-color: #1c1c1c;
+    bottom: 60px;
+    left: 12px;
+    width: 420px;
+    height: 60px;
+    border-radius: 5px;
+    user-select: none;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#left
+{
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    border-radius: 3px;
+    padding: 6px;
+    transition: 0.1s;
+}
+
+#left:hover
+{
+    background-color: #333333;
+}
+
+#startMenu img
+{
+    width: 32px;
+    margin-right: 10px;
+}
+
+#restart
+{
+    width: 24px !important;
+    margin-right: 16px !important;
+    border-radius: 3px;
+    padding: 6px;
+    transition: 0.1s;
+}
+
+#restart:hover
+{
+    background-color: #333333;
+}
+
+#startMenu label
+{
+    color: white;
+}
+
+@keyframes startClick
+{
+    0%
+    {
+        filter: brightness(1);
+        width: 24px;
+    }
+    50%
+    {
+        filter: brightness(0.75);
+        width: 18px;
+        padding-left: 2.5px;
+    }
+    100%
+    {
+        filter: brightness(1);
+        width: 24px;
+    }
 }
