@@ -304,14 +304,14 @@ body
     height: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(110px, 1fr));
     grid-auto-flow: column;
 }
 
 .program
 {
     display: flex;
-    margin: 10px;
+    margin: 7.5px;
     padding: 5px;
     flex-direction: column;
     border-radius: 5px;
@@ -357,6 +357,16 @@ body
     border-radius: 10px;
 }
 
+.windowAnimate
+{
+    animation: fadeIn linear 0.2s;
+}
+
+.reverseAnimate
+{
+    animation: fadeOut linear 0.2s;
+}
+
 .window textarea
 {
     margin: 10px;
@@ -366,6 +376,8 @@ body
     height: 360px;
     resize: none;
     outline: none;
+    background-color: #272727;
+    color: white;
 }
 
 .window video
@@ -376,7 +388,7 @@ body
     height: 320px;
 }
 
-.window img
+.window embed
 {
     margin: 10px;
     margin-top: 40px;
@@ -396,7 +408,7 @@ body
     background-image: linear-gradient(135deg, #ed7525, #4b3175);
 }
 
-.window button::after
+.window button div
 {
     position: absolute;
     border-radius: 30px;
@@ -420,6 +432,14 @@ body
     background-color: #202020;
     border-top-left-radius: 10px;
     height: 32px;
+}
+
+.windowHeader label
+{
+    position: absolute;
+    color: white;
+    left: 10px;
+    top: 5px;
 }
 
 .windowClose
@@ -498,5 +518,29 @@ body
     100%
     {
         filter: brightness(1);
+    }
+}
+
+@keyframes fadeIn
+{
+    0%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut
+{
+    0%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
     }
 }

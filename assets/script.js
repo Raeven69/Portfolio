@@ -134,7 +134,8 @@ function addWindowHandler(wndw)
 {
     wndw.getElementsByClassName("windowClose")[0].onclick = () =>
     {
-        document.body.removeChild(wndw);
+        wndw.classList.add("reverseAnimate");
+        setTimeout(() => document.body.removeChild(wndw), 200);
     }
     var pos1, pos2, pos3, pos4;
     wndw.getElementsByClassName("windowHeader")[0].onmousedown = (event) =>
@@ -169,7 +170,46 @@ function addWindowHandler(wndw)
     }
 }
 
-function addTextFile(name, text)
+function addPdfFile(name, path = "")
+{
+    var program = document.createElement("div");
+    program.classList.add("program");
+    var image = document.createElement("img");
+    image.src = "assets/pdf.png";
+    image.alt = "PDF file";
+    program.appendChild(image);
+    var filename = document.createElement("p");
+    filename.innerText = name;
+    program.appendChild(filename);
+    document.getElementById("programs").appendChild(program);
+    program.ondblclick = () =>
+    {
+        var wndw = document.createElement("div");
+        wndw.classList.add("window");
+        wndw.style.left = Math.round(Math.random() * (window.innerWidth - 680)) + "px";
+        wndw.style.top = Math.round(Math.random() * (window.innerHeight - 420)) + "px";
+        var header = document.createElement("header");
+        header.classList.add("windowHeader");
+        var label = document.createElement("label");
+        label.innerText = name;
+        header.appendChild(label);
+        wndw.appendChild(header);
+        var close = document.createElement("div");
+        close.classList.add("windowClose");
+        wndw.appendChild(close);
+        close.appendChild(document.createElement("span"));
+        close.appendChild(document.createElement("span"));
+        var embed = document.createElement("embed");
+        embed.src = path;
+        wndw.appendChild(embed);
+        document.body.appendChild(wndw);
+        wndw.classList.add("windowAnimate");
+        setTimeout(() => wndw.classList.remove("windowAnimate"), 200);
+        addWindowHandler(wndw);
+    }
+}
+
+function addTextFile(name, text = "")
 {
     var program = document.createElement("div");
     program.classList.add("program");
@@ -189,6 +229,9 @@ function addTextFile(name, text)
         wndw.style.top = Math.round(Math.random() * (window.innerHeight - 420)) + "px";
         var header = document.createElement("header");
         header.classList.add("windowHeader");
+        var label = document.createElement("label");
+        label.innerText = name;
+        header.appendChild(label);
         wndw.appendChild(header);
         var close = document.createElement("div");
         close.classList.add("windowClose");
@@ -199,11 +242,77 @@ function addTextFile(name, text)
         textarea.innerText = text;
         wndw.appendChild(textarea);
         document.body.appendChild(wndw);
+        wndw.classList.add("windowAnimate");
+        setTimeout(() => wndw.classList.remove("windowAnimate"), 200);
         addWindowHandler(wndw);
     }
 }
 
-window.onload = () => {
+function addVideoFile(name, path = "")
+{
+    var program = document.createElement("div");
+    program.classList.add("program");
+    var image = document.createElement("img");
+    image.src = "assets/video.png";
+    image.alt = "Video file";
+    program.appendChild(image);
+    var filename = document.createElement("p");
+    filename.innerText = name;
+    program.appendChild(filename);
+    document.getElementById("programs").appendChild(program);
+    program.ondblclick = () =>
+    {
+        var wndw = document.createElement("div");
+        wndw.classList.add("window");
+        wndw.style.left = Math.round(Math.random() * (window.innerWidth - 680)) + "px";
+        wndw.style.top = Math.round(Math.random() * (window.innerHeight - 420)) + "px";
+        var header = document.createElement("header");
+        header.classList.add("windowHeader");
+        var label = document.createElement("label");
+        label.innerText = name;
+        header.appendChild(label);
+        wndw.appendChild(header);
+        var close = document.createElement("div");
+        close.classList.add("windowClose");
+        wndw.appendChild(close);
+        close.appendChild(document.createElement("span"));
+        close.appendChild(document.createElement("span"));
+        var video = document.createElement("video");
+        video.src = path;
+        video.autoplay = true;
+        wndw.appendChild(video);
+        var button = document.createElement("button");
+        wndw.appendChild(button);
+        var icon = document.createElement("div");
+        button.appendChild(icon);
+        document.body.appendChild(wndw);
+        wndw.classList.add("windowAnimate");
+        setTimeout(() => wndw.classList.remove("windowAnimate"), 200);
+        video.onended = () =>
+        {
+            icon.style.backgroundImage = "url(\"assets/play.png\")";
+        }
+        button.onclick = () =>
+        {
+            button.classList.add("animate");
+            setTimeout(() => button.classList.remove("animate"), 200);
+            if (video.paused)
+            {
+                icon.style.backgroundImage = "url(\"assets/pause.png\")";
+                video.play();
+            }
+            else
+            {
+                icon.style.backgroundImage = "url(\"assets/play.png\")";
+                video.pause();
+            }
+        }
+        addWindowHandler(wndw);
+    }
+}
+
+function initializeMenus()
+{
     elements = [{element: document.getElementById("datetimeMenu"), classname: "hidden"}, {element: document.getElementById("iconMenu"), classname: "hidden"}, {element: document.getElementById("startMenu"), classname: "startHidden"}];
     setInterval(dateUpdater, 100);
     document.getElementById("datetime").onclick = openDatetimeMenu;
@@ -216,6 +325,17 @@ window.onload = () => {
     new DragSelect({selectables: document.getElementsByClassName("program"), area: document.getElementById("desktop")});
     document.getElementById("brightness").oninput = brightnessSlider;
     document.getElementById("volume").oninput = volumeSlider;
+}
 
-    addTextFile("hello.txt", "GUTENTAG");
+window.onload = () => {
+    initializeMenus();
+    addPdfFile("reflectieverslag.pdf", "assets/reflectieverslag.pdf");
+    addPdfFile("feedback.pdf", "assets/feedback.pdf");
+    addPdfFile("persoonlijk ontwikkelplan.pdf", "assets/pop.pdf");
+    addPdfFile("plan van aanpak.pdf", "assets/pva.pdf");
+    addTextFile("digitale presentatie.txt", "Deze video wordt op vrijdag 23/06/2023 toegevoegd.");
+    addPdfFile("interview schema.pdf", "assets/interviewschema.pdf");
+    addPdfFile("notulen.pdf", "assets/notulen.pdf");
+    addPdfFile("technisch adviesrapport.pdf", "assets/ta.pdf");
+    addPdfFile("edumundo.pdf", "assets/edumundo.pdf");
 }
