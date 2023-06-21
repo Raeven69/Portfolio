@@ -376,7 +376,7 @@ window.onload = () => {
     addPdfFile("interview schema.pdf", "assets/interviewschema.pdf");
     addPdfFile("notulen.pdf", "assets/notulen.pdf");
     addPdfFile("urenverantwoording.pdf", "assets/urenverantwoording.pdf");
-    addPdfFile("bouwplan technisch adviesrapport.pdf", "assets/bouwplan.pdf");
+    addPdfFile("bouwplan.pdf", "assets/bouwplan.pdf");
     addPdfFile("technisch adviesrapport.pdf", "assets/ta.pdf");
     addPdfFile("edumundo.pdf", "assets/edumundo.pdf");
 }
