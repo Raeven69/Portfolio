@@ -311,6 +311,45 @@ function addVideoFile(name, path = "")
     }
 }
 
+function addPdfFile(name, path = "")
+{
+    var program = document.createElement("div");
+    program.classList.add("program");
+    var image = document.createElement("img");
+    image.src = "assets/pdf.png";
+    image.alt = "PDF file";
+    program.appendChild(image);
+    var filename = document.createElement("p");
+    filename.innerText = name;
+    program.appendChild(filename);
+    document.getElementById("programs").appendChild(program);
+    program.ondblclick = () =>
+    {
+        var wndw = document.createElement("div");
+        wndw.classList.add("window");
+        wndw.style.left = Math.round(Math.random() * (window.innerWidth - 680)) + "px";
+        wndw.style.top = Math.round(Math.random() * (window.innerHeight - 420)) + "px";
+        var header = document.createElement("header");
+        header.classList.add("windowHeader");
+        var label = document.createElement("label");
+        label.innerText = name;
+        header.appendChild(label);
+        wndw.appendChild(header);
+        var close = document.createElement("div");
+        close.classList.add("windowClose");
+        wndw.appendChild(close);
+        close.appendChild(document.createElement("span"));
+        close.appendChild(document.createElement("span"));
+        var embed = document.createElement("embed");
+        embed.src = path;
+        wndw.appendChild(embed);
+        document.body.appendChild(wndw);
+        wndw.classList.add("windowAnimate");
+        setTimeout(() => wndw.classList.remove("windowAnimate"), 200);
+        addWindowHandler(wndw);
+    }
+}
+
 function initializeMenus()
 {
     elements = [{element: document.getElementById("datetimeMenu"), classname: "hidden"}, {element: document.getElementById("iconMenu"), classname: "hidden"}, {element: document.getElementById("startMenu"), classname: "startHidden"}];
@@ -333,9 +372,11 @@ window.onload = () => {
     addPdfFile("feedback.pdf", "assets/feedback.pdf");
     addPdfFile("persoonlijk ontwikkelplan.pdf", "assets/pop.pdf");
     addPdfFile("plan van aanpak.pdf", "assets/pva.pdf");
-    addTextFile("digitale presentatie.txt", "Deze video wordt op vrijdag 23/06/2023 toegevoegd.");
+    addTextFile("digitale presentatie.txt", "Deze video wordt op maandag 26/06/2023 toegevoegd.");
     addPdfFile("interview schema.pdf", "assets/interviewschema.pdf");
     addPdfFile("notulen.pdf", "assets/notulen.pdf");
+    addPdfFile("urenverantwoording.pdf", "assets/urenverantwoording.pdf");
+    addPdfFile("bouwplan technisch adviesrapport.pdf", "assets/bouwplan.pdf");
     addPdfFile("technisch adviesrapport.pdf", "assets/ta.pdf");
     addPdfFile("edumundo.pdf", "assets/edumundo.pdf");
 }
