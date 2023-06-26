@@ -372,7 +372,7 @@ window.onload = () => {
     addPdfFile("feedback.pdf", "assets/feedback.pdf");
     addPdfFile("persoonlijk ontwikkelplan.pdf", "assets/pop.pdf");
     addPdfFile("plan van aanpak.pdf", "assets/pva.pdf");
-    addTextFile("digitale presentatie.txt", "Deze video wordt op maandag 26/06/2023 toegevoegd.");
+    addVideoFile("digitale presentatie.mp4", "https://cdn.kasetoatz.com/files/CivFAEp.mp4");
     addPdfFile("interview schema.pdf", "assets/interviewschema.pdf");
     addPdfFile("notulen.pdf", "assets/notulen.pdf");
     addPdfFile("urenverantwoording.pdf", "assets/urenverantwoording.pdf");
