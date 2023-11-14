@@ -361,7 +361,6 @@ function initializeMenus()
     document.getElementById("iconMenu").onclick = (event) => event.stopPropagation();
     document.getElementById("startMenu").onclick = (event) => event.stopPropagation();
     document.body.onclick = clickListener;
-    new DragSelect({selectables: document.getElementsByClassName("program"), area: document.getElementById("desktop")});
     document.getElementById("brightness").oninput = brightnessSlider;
     document.getElementById("volume").oninput = volumeSlider;
 }
@@ -379,4 +378,5 @@ window.onload = () => {
     addPdfFile("bouwplan.pdf", "assets/bouwplan.pdf");
     addPdfFile("technisch adviesrapport.pdf", "assets/ta.pdf");
     addPdfFile("edumundo.pdf", "assets/edumundo.pdf");
+    new DragSelect({selectables: document.getElementsByClassName("program"), area: document.getElementById("desktop")});
 }
