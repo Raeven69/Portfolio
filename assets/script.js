@@ -367,16 +367,5 @@ function initializeMenus()
 
 window.onload = () => {
     initializeMenus();
-    addPdfFile("reflectieverslag.pdf", "assets/reflectieverslag.pdf");
-    addPdfFile("feedback.pdf", "assets/feedback.pdf");
-    addPdfFile("persoonlijk ontwikkelplan.pdf", "assets/pop.pdf");
-    addPdfFile("plan van aanpak.pdf", "assets/pva.pdf");
-    addVideoFile("digitale presentatie.mp4", "https://cdn.kasetoatz.com/files/CivFAEp.mp4");
-    addPdfFile("interview schema.pdf", "assets/interviewschema.pdf");
-    addPdfFile("notulen.pdf", "assets/notulen.pdf");
-    addPdfFile("urenverantwoording.pdf", "assets/urenverantwoording.pdf");
-    addPdfFile("bouwplan.pdf", "assets/bouwplan.pdf");
-    addPdfFile("technisch adviesrapport.pdf", "assets/ta.pdf");
-    addPdfFile("edumundo.pdf", "assets/edumundo.pdf");
     new DragSelect({selectables: document.getElementsByClassName("program"), area: document.getElementById("desktop")});
 }
