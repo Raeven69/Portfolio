@@ -39,7 +39,7 @@ function openDatetimeMenu(event)
     {
         hideMenus();
         var days = ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"];
-        var months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "November", "December"];
+        var months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "October", "November", "December"];
         var date = new Date();
         var dayName = days[date.getDay()];
         var day = leadingZero(date.getDate().toString());
