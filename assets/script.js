@@ -367,5 +367,11 @@ function initializeMenus()
 
 window.onload = () => {
     initializeMenus();
+    addPdfFile("Feedback Aman Trechsel.pdf", "assets/Feedback Aman Trechsel.pdf");
+    addPdfFile("Feedback Roan Hoogeveen.pdf", "assets/Feedback Roan Hoogeveen.pdf");
+    addPdfFile("Feedback Tim de Geus.pdf", "assets/Feedback Tim de Geus.pdf");
+    addPdfFile("English Letter.pdf", "assets/English Letter.pdf");
+    addPdfFile("English Survey.pdf", "assets/English Survey.pdf");
+    addPdfFile("Onderzoek.pdf", "assets/Onderzoek.pdf");
     new DragSelect({selectables: document.getElementsByClassName("program"), area: document.getElementById("desktop")});
 }
