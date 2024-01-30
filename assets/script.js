@@ -373,5 +373,6 @@ window.onload = () => {
     addPdfFile("English Letter.pdf", "assets/English Letter.pdf");
     addPdfFile("English Survey.pdf", "assets/English Survey.pdf");
     addPdfFile("Onderzoek.pdf", "assets/Onderzoek.pdf");
+	addPdfFile("POP.pdf", "assets/POP.pdf");
     new DragSelect({selectables: document.getElementsByClassName("program"), area: document.getElementById("desktop")});
 }
